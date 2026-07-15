@@ -1,0 +1,27 @@
+{
+	"schemaVersion": 1,
+	"id": "doomscroll",
+	"version": "${version}",
+	"name": "Doomscroll",
+	"description": "Get off your phone and stop doomscrolling damn it!",
+	"authors": [
+		"Nobodyasidentity"
+	],
+	"icon": "assets/doomscroll/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"io.github.nobodyasidentity.doomscroll.Doomscroll"
+		],
+		"client": [
+			"io.github.nobodyasidentity.doomscroll.DoomscrollClient"
+		]
+	},
+	"mixins": [
+		"doomscroll.mixins.json"
+	],
+	"depends": {
+		"minecraft": "~26.2",
+		"fabric-api": "*"
+	}
+}

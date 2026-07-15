@@ -1,0 +1,15 @@
+{
+	"required": true,
+	"package": "io.github.nobodyasidentity.doomscroll.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"mixins": [
+		"OffhandContainerMixin",
+		"KeyBindingMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}
