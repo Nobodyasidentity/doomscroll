@@ -4,7 +4,8 @@
 	"compatibilityLevel": "JAVA_25",
 	"mixins": [
 		"OffhandContainerMixin",
-		"KeyBindingMixin"
+		"KeyBindingMixin",
+		"KeyBindsListMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
