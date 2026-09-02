@@ -6,10 +6,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
-import com.mojang.blaze3d.platform.InputConstants;
 
 @Mixin(KeyMapping.class)
 public class KeyBindingMixin{
@@ -18,20 +15,20 @@ public class KeyBindingMixin{
     private boolean doomscroll$isTargetKey(){
         KeyMapping self=(KeyMapping)(Object)this;
         Minecraft client=Minecraft.getInstance();
-        if (client!=null&&client.options!=null){
+        if(client!=null&&client.options!=null){
             return self==client.options.keySwapOffhand;
         }
         return false;
     }
     @Inject(method="isDown",at=@At("HEAD"),cancellable=true)
-    private void forceNeverDown(CallbackInfoReturnable<Boolean> cir){
+    private void forceNeverDown(CallbackInfoReturnable<Boolean>cir){
         if (doomscroll$isTargetKey()){
             this.isDown=false;
             cir.setReturnValue(false);
         }
     }
     @Inject(method="consumeClick",at=@At("HEAD"),cancellable=true)
-    private void forceNeverClicked(CallbackInfoReturnable<Boolean> cir){
+    private void forceNeverClicked(CallbackInfoReturnable<Boolean>cir){
         if (doomscroll$isTargetKey()){
             this.clickCount=0;
             cir.setReturnValue(false);

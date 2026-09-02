@@ -11,13 +11,12 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(AbstractContainerMenu.class)
-public abstract class OffhandContainerMixin {
-
+public abstract class OffhandContainerMixin{
 	@Inject(method="clicked(IILnet/minecraft/world/inventory/ContainerInput;Lnet/minecraft/world/entity/player/Player;)V",at=@At("HEAD"),cancellable=true)
 	private void doomscroll$blockOffhandInventoryClicks(int slotId,int button,ContainerInput actionType,Player player,CallbackInfo ci){
-		if (player==null||slotId<0)return;
+		if(player==null||slotId<0)return;
 		AbstractContainerMenu menu=(AbstractContainerMenu)(Object)this;
-		if (slotId<menu.slots.size()){
+		if(slotId<menu.slots.size()){
 			Slot slot=menu.getSlot(slotId);
 			if (slot.container instanceof Inventory){
 				if (slot.getContainerSlot()==Inventory.SLOT_OFFHAND){
